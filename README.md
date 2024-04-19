@@ -1,9 +1,15 @@
 # Python Gmail 🐍📨
-The bare minimum usage to send an email from your gmail account using Python.
+The bare minimum api to send emails from your gmail account using Python.
 
 ## Features
-- Easy enough API
+- Easy API
 - Common defaults for smtp so you don't have to think about it.
+
+### Not Features
+- Getting previous emails
+- Getting contacts
+- Changing email settings
+- Etc.
 
 ## Requirements
 - Must have a Gmail account

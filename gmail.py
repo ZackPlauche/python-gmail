@@ -19,12 +19,14 @@ class GmailClient(BaseModel):
     def __repr__(self):
         return f'<GmailClient {self.from_}>'
 
+    @classmethod
     @field_validator('gmail')
     def validate_email_is_gmail(cls, email: str):
         if not email.endswith('@gmail.com'):
             raise ValueError('Email must be a Gmail address')
         return email
 
+    @classmethod
     @field_validator('app_password')
     def validate_app_password(cls, app_password: str):
         if not len(app_password) in (16, 19):
@@ -38,7 +40,7 @@ class GmailClient(BaseModel):
         load_dotenv(override=True)
         return cls(
             email=os.getenv('GMAIL_EMAIL'),
-            password=os.getenv('GMAIL_APP_PASSWORD'),
+            app_password=os.getenv('GMAIL_APP_PASSWORD'),
             name=os.getenv('GMAIL_NAME'),
         )
 
@@ -46,10 +48,11 @@ class GmailClient(BaseModel):
     def from_(self) -> str:
         return f'{self.name} <{self.email}>' if self.name else self.email
 
-    def send_email(self, from_: str, to: str | list[str], subject: str, body: str):
+    def send_email(self,  to: str | list[str], subject: str, body: str, from_: str | None = None):
+        from_ = from_ or self.from_
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as connection:
             connection.login(
-                username=self.email,
+                user=self.email,
                 password=self.app_password,
             )
             for email_address in to if isinstance(to, list) else [to]:
