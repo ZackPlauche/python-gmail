@@ -1,10 +1,10 @@
-from gmail import GmailClient
+import gmail
 
 
 def test_gmail():
-    gmail = GmailClient.from_env()
-    gmail.send_email(
-        gmail.email,
+    client = gmail.Client.from_env()
+    client.send_email(
+        client.email,
         'Test email',
         'This is a test email',
     )

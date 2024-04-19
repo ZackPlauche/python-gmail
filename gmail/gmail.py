@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel, Field, field_validator
 
 
-class GmailClient(BaseModel):
+class Client(BaseModel):
     email: str
     app_password: str = Field(..., repr=False)
     name: str | None = Field(default=None, description='Name of the user associated with the Gmail account (optional)')

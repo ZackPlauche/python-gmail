@@ -1,1 +1,1 @@
-from .gmail import GmailClient
+from .gmail import Client
