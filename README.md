@@ -3,7 +3,8 @@ The bare minimum api to send emails from your gmail account using Python.
 
 ## Features
 - Easy API
-- Common defaults for smtp so you don't have to think about it.
+- Common defaults for using smtp with Gmail so you don't have to think about it.
+- Supports emojis in text by default
 
 ### Not Features
 - Getting previous emails
@@ -78,7 +79,7 @@ This will send an email with a subject and body.
 For convenience, you can also create this at the instantiation and not have to think about it later:
 ```py
 >>> # Name will be Bob <example@gmail.com>
->>> client = Gmail(email='example@gmail.com', name='Bob', app_password=...)
+>>> client = Client(email='example@gmail.com', name='Bob', app_password=...)
 >>> # or from env vars
 >>> client = gmail.from_env(name='Bob')  # OR set GMAIL_NAME as an environment variable
 ```
