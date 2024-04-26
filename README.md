@@ -70,7 +70,7 @@ This will send an email with a subject and body.
 **Important Note:** Where usually you would see the name of your gmail account, you will only see your email **unless** you specify a name in the `from_` field, like this:
 ```py
 >>> client.send_email(
-...     from_=f'Example Email <{gmail.email}>', 
+...     from_=f'Example Email <{client.email}>', 
 ...     to='other@email.com',
 ...     subject='Howdy! 🤠',
 ...     body='Good morning neighbor! ☀️🏠🥓'
